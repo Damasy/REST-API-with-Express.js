@@ -21,7 +21,14 @@ function routes(Book) {
     });
   });
   bookRouter.route("/Books/:bookId")
-    .get((req, res) => res.json(req.book))
+    .get((req, res) => {
+      const genre = req.book.genre.replace(' ', '%20');
+      const returnBook = req.book.toJSON();
+      returnBook.links = {};
+      returnBook.links.FilterByThisGenre = `http://${req.headers.host}/api/books/?genre=${genre}`;
+
+      res.json(returnBook)
+    })
     .put((req, res) => {
       const { book } = req;
       book.genre = req.body.genre;
