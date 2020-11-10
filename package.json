@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha tests/**/*Tests.js",
     "lint": "eslint .",
     "start": "nodemon app.js"
   },
@@ -17,7 +17,10 @@
     "nodemon": "^2.0.6"
   },
   "devDependencies": {
-    "eslint": "^7.12.1"
+    "eslint": "^7.12.1",
+    "mocha": "^8.2.1",
+    "should": "^13.2.3",
+    "sinon": "^9.2.1"
   },
   "nodemonConfig": {
     "restartable": "rs",
